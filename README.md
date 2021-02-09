@@ -6,7 +6,7 @@ git clone > build > run
 
 client dependencies must be restore on first build 
 
-If you see a blank page please rebuild the project, or run build-client script on terminal (npm run build-client)
+If you see a blank page please rebuild the project, or run build-client script in a terminal (npm run build-client)
 
 ### APIs
 
@@ -37,7 +37,7 @@ You should be authenticated via GitHub in order to use below APIs.
 ### Testing
 For api tests please use nu3ProductUpdate.Tests project
 
-For client side tests please run test-client script on terminal (in root folder: npm run test-client,  or in wwwroot folder: npm run test) 
+For client side tests please run test-client script in a terminal (in root folder: npm run test-client,  or in wwwroot folder: npm run test) 
 
 You can find test coverage file for client side in wwwroot\coverage folder.
 
