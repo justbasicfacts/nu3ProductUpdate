@@ -1,6 +1,13 @@
 # nu3ProductUpdate
 nu3 product update task
 
+My implementation of the given task by nu3.
+
+Project uses; 
+* LiteDB which is a small, fast and lightweight .NET NoSQL embedded database.
+* lit-element which is a simple base class for creating fast, lightweight web components that work in any web page with any framework. LitElement uses lit-html to render into shadow DOM, and adds API to manage properties and attributes.
+* AspNet.Security.OAuth.Providers  which is a collection of security middleware that you can use in your ASP.NET Core application to support social authentication providers like GitHub, Foursquare or Dropbox.
+
 ### Usage
 git clone > build > run
 
