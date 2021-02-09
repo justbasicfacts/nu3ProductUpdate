@@ -64,6 +64,10 @@ export const nu3IndexStyle = css`
   }
 
   .sign-in-container {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: thin solid lightgray;
+    border-top: thin solid lightgray;
     margin-bottom: 8px;
   }
 

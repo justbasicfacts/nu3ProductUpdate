@@ -58,7 +58,6 @@ export class Nu3Index extends LitElement {
         return html`
       ${this.authenticationCheckCompleted
                 ? html` <h1>nu3 Product Management</h1>
-            <hr />
             <div class="sign-in-container">
               <form
                 class="sign-in-form"
@@ -103,7 +102,6 @@ export class Nu3Index extends LitElement {
                     </button>`
                         : ``}
             </div>
-            <hr />
 
             ${this.authenticated
                         ? this.getAuthenticatedTemplate()
