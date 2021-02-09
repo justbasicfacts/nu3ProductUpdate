@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <OutputType>Exe</OutputType>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <UserSecretsId>0d94a2d5-d5a6-4cf8-b272-1fe1c687866f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Upload\**" />
+    <Compile Remove="wwwroot\coverage\**" />
+    <Compile Remove="wwwroot\dist\**" />
+    <Content Remove="Upload\**" />
+    <Content Remove="wwwroot\coverage\**" />
+    <Content Remove="wwwroot\dist\**" />
+    <EmbeddedResource Remove="Upload\**" />
+    <EmbeddedResource Remove="wwwroot\coverage\**" />
+    <EmbeddedResource Remove="wwwroot\dist\**" />
+    <None Remove="Upload\**" />
+    <None Remove="wwwroot\coverage\**" />
+    <None Remove="wwwroot\dist\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="LiteDb\Products-log.db" />
+    <None Remove="LiteDb\Products.db" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="5.0.1" />
+    <PackageReference Include="LiteDB" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="LiteDb\" />
+  </ItemGroup>
+
+	<Target Name="GetClientDependencies" BeforeTargets="Build">
+		<Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+		<Exec WorkingDirectory="wwwroot\" Command="npm install --no-audit" />
+		<Message Importance="high" Text="Done restoring dependencies using 'npm'." />
+		<Message Importance="high" Text="Building client app using rollup" />
+		<Exec WorkingDirectory="wwwroot\" Command="npm run build" />
+		<Message Importance="high" Text="Done building web app." />
+	</Target>
+
+</Project>

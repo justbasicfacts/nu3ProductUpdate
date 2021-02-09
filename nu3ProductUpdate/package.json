@@ -1,0 +1,15 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+
+  "scripts": {
+    "build-client": "cd wwwroot && npm run build",
+    "test-client": "cd wwwroot && npm run test"
+  }
+}
