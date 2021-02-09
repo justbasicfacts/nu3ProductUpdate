@@ -50,5 +50,18 @@ namespace nu3ProductUpdate.Tests
                 };
             }
         }
+
+        public static Inventory[] InventoryList
+        {
+            get
+            {
+                return new Inventory[] {
+                    new Inventory { Amount=10, Handle="test", Location="Berlin" },
+                    new Inventory { Amount=20, Handle="test1", Location="Dusseldorf"},
+                    new Inventory { Amount=30, Handle="test2", Location="Hamburg" },
+                };
+            }
+        }
+
     }
 }
