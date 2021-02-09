@@ -35,7 +35,7 @@ namespace nu3ProductUpdate.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Product> Insert(Product product)
+        public IActionResult Insert(Product product)
         {
             var id = _productsService.Insert(product);
             if (id != default)
@@ -45,7 +45,7 @@ namespace nu3ProductUpdate.Controllers
         }
 
         [HttpPut("{handle}", Name = "UpdateByHandle")]
-        public ActionResult<Product> Update(Product product)
+        public IActionResult Update(Product product)
         {
             var result = _productsService.Update(product);
             if (result)

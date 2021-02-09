@@ -23,23 +23,6 @@ namespace nu3ProductUpdate.Data.Services
             return _productCollection.Exists(predicate);
         }
 
-        public long Delete(Product product)
-        {
-            return Delete(product.Id);
-        }
-
-        public long Delete(long productId)
-        {
-            if (_productCollection.Delete(productId))
-            {
-                return productId;
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
         public IEnumerable<Product> FindAll()
         {
             return _productCollection.FindAll();
