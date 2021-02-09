@@ -8,6 +8,32 @@ client dependencies must be restore on first build
 
 If you see a blank page please rebuild the project, or run build-client script on terminal (npm run build-client)
 
+### APIs
+
+You should be authenticated via GitHub in order to use below APIs. 
+
+#### files api  - /files
+
+/get -> returns all file informations
+
+/get/:fileId -> returns  file matching given fileId
+
+/put -> adds new file
+
+/delete/:fileId -> deletes file matching given fileId
+
+#### products api  - /products
+
+/get -> returns all products
+
+/get/:handle -> returns products matching given handle
+
+/put/:handle -> updates products matching given handle
+
+#### inventories api - /inventory
+
+/get -> returns inventory information
+
 ### Testing
 For api tests please use nu3ProductUpdate.Tests project
 
