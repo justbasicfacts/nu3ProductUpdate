@@ -17,7 +17,7 @@ You can find test coverage file for client side in wwwroot\coverage folder.
 
 ### Screenshots
 #### Before Login
-![nu3-test2](https://user-images.githubusercontent.com/29313362/107337044-e736d300-6aca-11eb-8b89-d0f38094dc7a.PNG)
+![nu3-test2](https://user-images.githubusercontent.com/29313362/107345013-2f0e2800-6ad4-11eb-8294-0630628f7411.PNG)
 
 #### After Login
 ![nu3-test3](https://user-images.githubusercontent.com/29313362/107342966-e6ee0600-6ad1-11eb-82cb-803a4bf872a4.PNG)
