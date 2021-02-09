@@ -1,5 +1,4 @@
-﻿using LiteDB;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -54,13 +53,13 @@ namespace nu3ProductUpdate.Controllers
             if (fileInfo == null)
                 return NotFound();
 
-            LiteFileStream<string> fileStream = _filesService.GetFileStreamById(id);
+            var fileStream = _filesService.GetFileStreamById(id);
 
             return File(fileStream, fileInfo.MimeType, fileInfo.Filename);
         }
 
         [HttpGet]
-        public IEnumerable<LiteFileInfo<string>> Get()
+        public IEnumerable<CustomFileInfo> Get()
         {
             return _filesService.FindAll();
         }

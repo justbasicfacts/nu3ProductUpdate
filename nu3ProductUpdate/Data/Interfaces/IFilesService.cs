@@ -1,4 +1,4 @@
-﻿using LiteDB;
+﻿using nu3ProductUpdate.Classes;
 using nu3ProductUpdate.Classes.Events;
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,14 @@ namespace nu3ProductUpdate.Data.Interfaces
     {
         public event EventHandler<FileUploadedEventArgs> OnFileUploaded;
 
-        LiteFileInfo<string> Add(string id, string fileName, Stream stream);
+        CustomFileInfo Add(string id, string fileName, Stream stream);
 
         bool Delete(string fileName);
 
-        IEnumerable<LiteFileInfo<string>> FindAll();
+        IEnumerable<CustomFileInfo> FindAll();
 
-        LiteFileStream<string> GetFileStreamById(string id);
+        CustomFileStream GetFileStreamById(string id);
 
-        LiteFileInfo<string> GetFileInfoById(string id);
+        CustomFileInfo GetFileInfoById(string id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using nu3ProductUpdate.Classes;
 using nu3ProductUpdate.Classes.Events;
 using nu3ProductUpdate.Data.Interfaces;
 using System;
@@ -19,7 +20,7 @@ namespace nu3ProductUpdate.Data.Services
 
         public event EventHandler<FileUploadedEventArgs> OnFileUploaded;
 
-        public LiteFileInfo<string> Add(string id, string fileName, Stream stream)
+        public CustomFileInfo Add(string id, string fileName, Stream stream)
         {
             LiteFileInfo<string> retVal;
             using (stream)
@@ -34,7 +35,7 @@ namespace nu3ProductUpdate.Data.Services
                 }
             }
 
-            return retVal;
+            return new CustomFileInfo(retVal);
         }
 
         public bool Delete(string id)
@@ -42,19 +43,19 @@ namespace nu3ProductUpdate.Data.Services
             return _productFilesStorage.Delete(id);
         }
 
-        public IEnumerable<LiteFileInfo<string>> FindAll()
+        public IEnumerable<CustomFileInfo> FindAll()
         {
-            return _productFilesStorage.FindAll().OrderByDescending(item => item.UploadDate);
+            return _productFilesStorage.FindAll().OrderByDescending(item => item.UploadDate).Select(item => new CustomFileInfo(item));
         }
 
-        public LiteFileInfo<string> GetFileInfoById(string id)
+        public CustomFileInfo GetFileInfoById(string id)
         {
-            return _productFilesStorage.FindById(id);
+            return new CustomFileInfo(_productFilesStorage.FindById(id));
         }
 
-        public LiteFileStream<string> GetFileStreamById(string id)
+        public CustomFileStream GetFileStreamById(string id)
         {
-            return _productFilesStorage.OpenRead(id);
+            return new CustomFileStream(_productFilesStorage.OpenRead(id));
         }
 
         private ILiteStorage<string> GetFileStorage(LiteDatabase productDb)
