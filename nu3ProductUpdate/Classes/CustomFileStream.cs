@@ -10,9 +10,9 @@ namespace nu3ProductUpdate.Classes
         {
         }
 
-        public CustomFileStream(Stream liteFileStream)
+        public CustomFileStream(Stream fileStream)
         {
-            stream = liteFileStream;
+            stream = fileStream;
         }
 
         public override bool CanRead => stream.CanRead;

@@ -27,6 +27,11 @@ namespace nu3ProductUpdate.Controllers
         [HttpGet("{handle}", Name = "GetByHandle")]
         public ActionResult<Product> Get(string handle)
         {
+            if (string.IsNullOrWhiteSpace(handle))
+            {
+                return BadRequest(ModelState);
+            }
+
             var result = _productsService.GetByHandle(handle);
             if (result != default)
                 return Ok(result);
@@ -37,6 +42,11 @@ namespace nu3ProductUpdate.Controllers
         [HttpPost]
         public IActionResult Insert(Product product)
         {
+            if (product == null)
+            {
+                return BadRequest(ModelState);
+            }
+
             var id = _productsService.Insert(product);
             if (id != default)
                 return CreatedAtRoute("GetByHandle", new { id }, product);
@@ -47,6 +57,11 @@ namespace nu3ProductUpdate.Controllers
         [HttpPut("{handle}", Name = "UpdateByHandle")]
         public IActionResult Update(Product product)
         {
+            if (product == null)
+            {
+                return BadRequest(ModelState);
+            }
+
             var result = _productsService.Update(product);
             if (result)
                 return NoContent();

@@ -49,8 +49,25 @@ namespace nu3ProductUpdate.Tests
             IFormFile file = new FormFile(new System.IO.MemoryStream(Encoding.UTF8.GetBytes("")), 0, 0, "test", "test.xml");
 
             var uploadedItem = _filesController.Upload(file);
-            var fileStreamResult = uploadedItem as OkObjectResult;
-            Assert.IsNotNull(fileStreamResult.Value as FileUploadResult);
+            var okObjectResult = uploadedItem as OkObjectResult;
+            Assert.IsNotNull(okObjectResult.Value as FileUploadResult);
+        }
+        [TestMethod]
+        public void GetByIdBadRequest()
+        {
+            var downloadedItem = _filesController.Download("");
+            var fileStreamResult = downloadedItem as BadRequestObjectResult;
+            Assert.IsNotNull(fileStreamResult);
+        }
+
+        [TestMethod]
+        public void UploadBadRequest()
+        {
+            IFormFile file = null;
+
+            var uploadedItem = _filesController.Upload(file);
+            var fileStreamResult = uploadedItem as BadRequestObjectResult;
+            Assert.IsNotNull(fileStreamResult);
         }
     }
 }

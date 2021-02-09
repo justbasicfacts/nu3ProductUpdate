@@ -35,6 +35,11 @@ namespace nu3ProductUpdate.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest(ModelState);
+            }
+
             var isDeleted = _filesService.Delete(id);
             if (isDeleted)
             {
@@ -49,6 +54,11 @@ namespace nu3ProductUpdate.Controllers
         [HttpGet("{id}")]
         public IActionResult Download(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest(ModelState);
+            }
+
             var fileInfo = _filesService.GetFileInfoById(id);
             if (fileInfo == null)
                 return NotFound();
@@ -68,6 +78,11 @@ namespace nu3ProductUpdate.Controllers
         [HttpPut]
         public IActionResult Upload([FromForm] IFormFile productData)
         {
+            if (productData == null)
+            {
+                return BadRequest(ModelState);
+            }
+
             FileUploadResult result;
             try
             {
@@ -84,6 +99,11 @@ namespace nu3ProductUpdate.Controllers
 
         private FileUploadResult UploadFile(IFormFile file)
         {
+            if (file == null)
+            {
+                throw new ArgumentNullException(nameof(file));
+            }
+
             FileUploadResult fileUploadResult = new FileUploadResult { IsSuccessful = false };
             try
             {
