@@ -34,10 +34,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OAuth" Version="2.2.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="LiteDb\" />
-  </ItemGroup>
-
 	<Target Name="GetClientDependencies" BeforeTargets="Build">
 		<Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
 		<Exec WorkingDirectory="wwwroot\" Command="npm install --no-audit" />
