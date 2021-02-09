@@ -11,7 +11,7 @@ Project uses;
 ### Usage
 git clone > build > run
 
-client dependencies must be restore on first build 
+client dependencies must be restored on first build.
 
 If you see a blank page please rebuild the project, or run build-client script in a terminal (npm run build-client)
 
