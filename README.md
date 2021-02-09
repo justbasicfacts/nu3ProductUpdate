@@ -37,7 +37,7 @@ You should be authenticated via GitHub in order to use below APIs.
 
 /put/:handle -> updates products matching given handle
 
-#### inventories api - /inventory
+#### inventoy api - /inventory
 
 /get -> returns inventory information
 
