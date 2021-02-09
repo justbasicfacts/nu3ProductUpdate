@@ -15,7 +15,7 @@ namespace nu3ProductUpdate.Tests
     public class ProductsControllerTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void GetSingleProduct()
         {
             var productList = new Product[] {
                 new Product {

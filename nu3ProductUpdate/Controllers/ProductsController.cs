@@ -44,7 +44,7 @@ namespace nu3ProductUpdate.Controllers
                 return BadRequest();
         }
 
-        [HttpPut]
+        [HttpPut("{handle}", Name = "UpdateByHandle")]
         public ActionResult<Product> Update(Product product)
         {
             var result = _productsService.Update(product);
