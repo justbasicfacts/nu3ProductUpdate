@@ -50,7 +50,13 @@ namespace nu3ProductUpdate.Data.Services
 
         public CustomFileInfo GetFileInfoById(string id)
         {
-            return new CustomFileInfo(_productFilesStorage.FindById(id));
+            var foundFile = _productFilesStorage.FindById(id);
+            if (foundFile != null)
+            {
+                return new CustomFileInfo(foundFile);
+            }
+
+            return null;
         }
 
         public CustomFileStream GetFileStreamById(string id)

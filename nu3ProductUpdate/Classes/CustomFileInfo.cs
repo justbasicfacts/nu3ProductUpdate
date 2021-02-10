@@ -12,12 +12,15 @@ namespace nu3ProductUpdate.Classes
 
         public CustomFileInfo(LiteFileInfo<string> fileInfo)
         {
-            Id = fileInfo.Id;
-            Filename = fileInfo.Filename;
-            MimeType = fileInfo.MimeType;
-            Length = fileInfo.Length;
-            Chunks = fileInfo.Chunks;
-            UploadDate = fileInfo.UploadDate;
+            if (fileInfo != null)
+            {
+                Id = fileInfo.Id;
+                Filename = fileInfo.Filename;
+                MimeType = fileInfo.MimeType;
+                Length = fileInfo.Length;
+                Chunks = fileInfo.Chunks;
+                UploadDate = fileInfo.UploadDate;
+            }
         }
 
         public CustomFileInfo(string id, string filename, string mimeType, long length, int chunks, DateTime uploadDate)
