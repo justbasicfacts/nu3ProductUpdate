@@ -13,7 +13,7 @@ namespace nu3ProductUpdate.Tests
         public static void SetupProductsService(this Mock<IProductsService> mock, IEnumerable<Product> productList)
         {
             mock.Setup(p => p.FindAll()).Returns(productList);
-            mock.Setup(p => p.GetByHandle("test1")).Returns(productList.ElementAt(0));
+            mock.Setup(p => p.GetByHandle(It.IsAny<string>())).Returns((string handle) => productList.FirstOrDefault(item => item.Handle == handle));
             mock.Setup(p => p.Update(It.IsAny<Product>())).Returns(true);
             mock.Setup(p => p.Insert(It.IsAny<Product>())).Returns<Product>(x => x.Id);
         }
@@ -26,5 +26,12 @@ namespace nu3ProductUpdate.Tests
             mock.Setup(f => f.GetFileStreamById(It.IsAny<string>())).Returns(new CustomFileStream(stream));
             mock.Setup(f => f.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<System.IO.Stream>())).Returns(files.FirstOrDefault());
         }
+
+        public static void SetupInventoryService(this Mock<IInventoryService> mock, IEnumerable<Inventory> inventory)
+        {
+            mock.Setup(i => i.FindAll()).Returns(inventory);
+            mock.Setup(i => i.GetByHandle(It.IsAny<string>())).Returns((string handle) => MockData.InventoryList.FirstOrDefault(item => item.Handle == handle));
+        }
+
     }
 }

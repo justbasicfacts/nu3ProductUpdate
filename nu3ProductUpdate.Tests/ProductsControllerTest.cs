@@ -14,10 +14,10 @@ namespace nu3ProductUpdate.Tests
     {
         private Mock<IProductsService> _productsService = new Mock<IProductsService>();
         private ProductsController _productsController;
-        private static readonly Product[] productData = MockData.ProductsList;
+        private static readonly Product[] _productData = MockData.ProductsList;
         public ProductsControllerTest()
         {
-            _productsService.SetupProductsService(productData);
+            _productsService.SetupProductsService(_productData);
             _productsController = new ProductsController(_productsService.Object);
 
         }
@@ -27,7 +27,7 @@ namespace nu3ProductUpdate.Tests
         {
 
             var product = _productsController.Get("test1");
-            Assert.IsTrue(((product?.Result as OkObjectResult)?.Value as Product).Equals(productData[0]));
+            Assert.IsTrue(((product?.Result as OkObjectResult)?.Value as Product).Equals(_productData[0]));
         }
 
         [TestMethod]
@@ -37,15 +37,27 @@ namespace nu3ProductUpdate.Tests
             var productCount = products.Count();
 
             Assert.AreEqual(productCount, 2);
-            Assert.IsTrue(products.ElementAt(0).Equals(productData[0]));
-            Assert.IsTrue(products.ElementAt(1).Equals(productData[1]));
+     
+
+            bool allItemsEqual = true;
+
+            for (int i = 0; i < productCount; i++)
+            {
+                if (!products.ElementAt(i).Equals(_productData.ElementAt(i)))
+                {
+                    allItemsEqual = false;
+                    break;
+                }
+            }
+
+            Assert.IsTrue(allItemsEqual);
         }
 
         [TestMethod]
         public void UpdateProduct()
         {
 
-            var firstProduct = productData[1];
+            var firstProduct = _productData[1];
             var result = _productsController.Update(firstProduct) as NoContentResult;
             Assert.IsNotNull(result);
             Assert.AreEqual(result.StatusCode, (int)HttpStatusCode.NoContent);
@@ -55,7 +67,7 @@ namespace nu3ProductUpdate.Tests
         public void InsertProduct()
         {
 
-            var firstProduct = productData[1];
+            var firstProduct = _productData[1];
             var result = _productsController.Insert(firstProduct);
 
             var productInsertResult = (result as CreatedAtRouteResult)?.Value;
