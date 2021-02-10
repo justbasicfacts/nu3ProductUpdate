@@ -157,7 +157,7 @@ export class Nu3Index extends LitElement {
               (item) =>
                 html`<div class="file-info-row">
                   <span class="file-detail">
-                    ${item.fileType === FileTypeEnum.Products
+                    ${item.fileType === FileTypeEnum.PRODUCTS
                       ? "Products"
                       : "Inventory"}</span
                   ><span class="file-detail">

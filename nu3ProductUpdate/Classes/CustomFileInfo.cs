@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using nu3ProductUpdate.Data.Enums;
 using nu3ProductUpdate.Data.Interfaces;
 using System;
 
@@ -39,5 +40,12 @@ namespace nu3ProductUpdate.Classes
         public long Length { get; set; }
         public int Chunks { get; set; }
         public DateTime UploadDate { get; set; }
+        public FileType FileType
+        {
+            get
+            {
+                return MimeType == AllowedMimeTypes.Text.Xml ? FileType.Product : FileType.Inventory;
+            }
+        }
     }
 }

@@ -71,7 +71,8 @@ namespace nu3ProductUpdate.Controllers
         [HttpGet]
         public IEnumerable<CustomFileInfo> Get()
         {
-            return _filesService.FindAll();
+            var psz= _filesService.FindAll();
+            return psz;
         }
 
         [AllowedFileExtension(new string[] { "xml", "csv" })]
@@ -117,7 +118,6 @@ namespace nu3ProductUpdate.Controllers
                     var fileInfo = _filesService.Add(fileId, fileName, stream);
 
                     fileUploadResult.FileInfo = fileInfo;
-                    fileUploadResult.FileType = fileInfo.MimeType == AllowedMimeTypes.Text.Xml ? FileType.Product : FileType.Inventory;
                 }
 
                 fileUploadResult.IsSuccessful = true;
