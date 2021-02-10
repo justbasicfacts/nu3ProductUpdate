@@ -3,6 +3,7 @@
   deleteFile,
   returnFileSize,
   getFiles,
+  FileTypeEnum,
 } from "./fileOperations/index.js";
 import { nu3IndexStyle } from "./style/nu3IndexStyle.js";
 import cloudUpload from "./images/cloud-upload.js";
@@ -156,7 +157,7 @@ export class Nu3Index extends LitElement {
               (item) =>
                 html`<div class="file-info-row">
                   <span class="file-detail">
-                    ${item.mimeType === "text/xml"
+                    ${item.fileType === FileTypeEnum.Products
                       ? "Products"
                       : "Inventory"}</span
                   ><span class="file-detail">
