@@ -47,7 +47,7 @@ namespace nu3ProductUpdate.Data.Services
 
                 foreach (var inventoryItem in inventoryList)
                 {
-                    var foundInventoryItem = _inventoryCollection.FindOne(item => item.Handle == inventoryItem.Handle && item.Location == inventoryItem.Location);
+                    var foundInventoryItem = _inventoryCollection.FindOne(item => item.UniqueId == inventoryItem.UniqueId);
                     if (foundInventoryItem != null)
                     {
                         _inventoryCollection.Update(inventoryItem);

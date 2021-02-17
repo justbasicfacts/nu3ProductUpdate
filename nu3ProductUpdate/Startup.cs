@@ -26,7 +26,7 @@ namespace nu3ProductUpdate
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            BsonMapper.Global.Entity<Models.Inventory>().Id(item => item.Handle);
+            BsonMapper.Global.Entity<Models.Inventory>().Id(item => item.UniqueId);
             BsonMapper.Global.Entity<Models.Product>().Id(item => item.Id);
 
             services.Configure<LiteDbOptions>(Configuration.GetSection("LiteDbOptions"));
